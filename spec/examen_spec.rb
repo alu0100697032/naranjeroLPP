@@ -17,13 +17,13 @@ describe Examen do
     end
     
     describe "Getter de enunciado" do
-      it "getenum devuelve el valor de p1.enunciado" do
+      it "devuelve el valor de p1.enunciado" do
         @p1.enunciado.should eq ("Enunciado")
       end
   end
   
   describe "Getter de respuestas" do  
-      it "getres_i devuelve el valor de p1.respuesta_i" do
+      it "devuelve el valor de p1.respuesta_i" do
         @p1.respuesta_a.should eq ("a")
         @p1.respuesta_b.should eq ("b")
         @p1.respuesta_c.should eq ("c")
