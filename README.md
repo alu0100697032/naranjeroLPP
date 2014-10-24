@@ -1,6 +1,7 @@
 # Integrantes
 
-Victor Hernández Pérez <p>
+Victor Hernández Pérez 
+
 David Rodríguez González de Chaves
 
 # Examen
