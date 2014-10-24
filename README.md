@@ -1,3 +1,9 @@
+# Integrantes
+
+Victor Hernández Pérez 
+
+David Rodríguez González de Chaves
+
 # Examen
 
 TODO: Write a gem description
