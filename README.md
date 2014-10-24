@@ -4,6 +4,8 @@ Victor Hernández Pérez
 
 David Rodríguez González de Chaves
 
+Grupo: LPP_T_35
+
 # Examen
 
 TODO: Write a gem description
