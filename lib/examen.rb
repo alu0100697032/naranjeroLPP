@@ -1,5 +1,5 @@
 require "examen/version"
 
 module Examen
-  # Your code goes here...
+  require 'examen/pregunta.rb'
 end

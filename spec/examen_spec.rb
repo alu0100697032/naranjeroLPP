@@ -1,6 +1,9 @@
 require 'examen'
 
 describe Examen do
+    before :each do
+        @p1 = Pregunta.new("Enunciado", "a", "b", "c", "d")
+    end
     describe "La pregunta es coherente" do
         it "Existe enunciado" do
             @p1.enunciado != nil
