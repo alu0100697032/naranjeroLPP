@@ -1,17 +1,23 @@
+#encoding: UTF-8
 class Pregunta 
     
-    attr_reader :enunciado, :respuesta_a, :respuesta_b, :respuesta_c, :respuesta_d
+    attr_reader :enunciado, :respuestas
     
-    def initialize (enun, a, b, c, d)
+    def initialize (enun, *resp)
         @enunciado = enun
-        @respuesta_a = a
-        @respuesta_b = b
-        @respuesta_c = c
-        @respuesta_d = d
+        @respuestas = resp 
     end
     
     def to_s
-        "#{@enunciado} \n a) #{@respuesta_a} \n b) #{@respuesta_b} \n c) #{@respuesta_c} \n d) #{@respuesta_d}"
+        mostrar = "#{@enunciado} \n "
+        var = 0
+        while var < @respuestas.length
+            mostrar = mostrar + @respuestas[var].to_s + " \n "
+            var +=1
+        end
+        puts mostrar
     end
     
 end
+
+
