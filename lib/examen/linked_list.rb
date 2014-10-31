@@ -19,4 +19,18 @@ class List
         @final = final - 1
     end
     
+    def insert(index, *valores)
+        var = 0
+        val = valores
+        while val.length > var 
+            if(val.length == val.length - 1)
+                @lista.insert(index + var, Node.new(valores[var], @lista[index + val.length]))
+            else
+                @lista.insert(index + var, Node.new(valores[var], valores[var + 1]))
+            end
+            @lista[index-1].next = @lista[index].value
+            var += 1
+        end
+    end
+    
 end
