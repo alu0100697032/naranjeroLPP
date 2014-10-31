@@ -9,10 +9,10 @@ class Pregunta
     end
     
     def to_s
-        mostrar = "#{@enunciado} \n "
+        mostrar = "#{@enunciado}"
         var = 0
         while var < @respuestas.length
-            mostrar = mostrar + @respuestas[var].to_s + " \n "
+            mostrar = mostrar + " \n " + @respuestas[var].to_s 
             var +=1
         end
         mostrar
