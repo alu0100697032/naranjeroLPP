@@ -44,25 +44,26 @@ describe Examen do
   end
   describe "Node" do 
     it "Debe existir un Nodo de la lista con sus datos y su siguiente" do 
-      @l1.lista[0].value != nil
-      @l1.lista[0].next == nil
+      @l1.raiz.value != nil
+      @l1.raiz.next == nil
     end
   end
   describe "List" do 
     it "Se extrae el primer elemento de la lista" do 
+      @l1.push(8)
       @l1.shift
-      @l1.lista.length.should eq(0) 
+      @l1.raiz.value.should eq(8)
     end
     it "Se puede insertar un elemento" do 
       @l1.push(8)
-      @l1.lista.length.should eq(2)
+      @l1.tail.value = (8)
     end
     it "Se pueden insertar varios elementos" do 
-      @l1.insert(1, 3,4,5)
-      @l1.lista.length.should eq(4)
+      @l1.insert(3,4,5)
+      @l1.tail.value.should eq(5)
     end
     it "Debe existir una lista con su cabeza" do 
-      @l1.lista[0].value == "Raiz"
+      @l1.raiz.value == "Raiz"
   end
   end
 end
