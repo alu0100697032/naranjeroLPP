@@ -12,14 +12,6 @@ class List
         @lista.push Node.new(valor, nil)
         @final += 1
     end
-
-    def insert(index, valor)
-        @lista.insert(index, Node.new(valor, @lista[index].value))
-        if(index - 1 >= 0)
-            @lista[index - 1].next = valor
-        end
-        @final += 1
-    end
     
     def insert(index, *valores)
         var = 0
@@ -32,6 +24,7 @@ class List
             end
             @lista[index-1].next = @lista[index].value
             var += 1
+            @final += 1
         end
     end
     
