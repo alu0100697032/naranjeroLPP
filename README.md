@@ -8,7 +8,9 @@ Grupo: LPP_T_35
 
 # Examen
 
-TODO: Write a gem description
+TODO: El objetivo de la práctica es crear una gema para representar preguntas de selección simple de un examen. 
+Se usan las herramienta Bundler para crear la estructura de la gema y Rspec para las espectativas.
+Se ha implementado una clase Lista para representar listas enlazadas.
 
 ## Installation
 
