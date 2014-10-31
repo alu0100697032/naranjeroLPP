@@ -30,7 +30,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Ejecutar Rake -T para ver las opciones que están disponibles
 
 ## Contributing
 
