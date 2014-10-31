@@ -43,5 +43,10 @@ describe Examen do
       @l1.lista[0].next == nil
     end
   end
+  describe "List" do 
+    it "Se extrae el primer elemento de la lista" do 
+      @l1.shift
+      @l1.lista.length.should eq(0) 
+    end
+  end
 end
-
