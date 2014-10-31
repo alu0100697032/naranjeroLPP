@@ -52,5 +52,10 @@ describe Examen do
       @l1.shift
       @l1.lista.length.should eq(0) 
     end
+    it "Se puede insertar un elemento" do 
+      @l1.push(8)
+      @l1.lista.length.should eq(2)
+    end
   end
+  
 end
