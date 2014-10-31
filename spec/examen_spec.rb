@@ -56,6 +56,10 @@ describe Examen do
       @l1.push(8)
       @l1.lista.length.should eq(2)
     end
+    it "Se pueden insertar varios elementos" do 
+      @l1.insert(1, 3,4,5)
+      @l1.lista.length.should eq(4)
+    end
   end
   
 end
