@@ -13,12 +13,6 @@ class List
         @final += 1
     end
 
-#Métodos de borrado
-    def shift
-        @lista.shift
-        @final = final - 1
-    end
-    
     def insert(index, *valores)
         var = 0
         val = valores
@@ -31,6 +25,25 @@ class List
             @lista[index-1].next = @lista[index].value
             var += 1
         end
+    end
+    
+    def unshift(valor)
+        @lista.unshift Node.new(valor, @lista[0].value)
+        @final += 1
+    end
+    
+    def insert(index, valor)
+        @lista.insert(index, Node.new(valor, @lista[index].value))
+        if(index - 1 >= 0)
+            @lista[index - 1].next = valor
+        end
+        @final += 1
+    end
+    
+#Métodos de borrado
+    def shift
+        @lista.shift
+        @final = final - 1
     end
     
 end
