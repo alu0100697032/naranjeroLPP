@@ -13,6 +13,14 @@ class List
         @final += 1
     end
 
+    def insert(index, valor)
+        @lista.insert(index, Node.new(valor, @lista[index].value))
+        if(index - 1 >= 0)
+            @lista[index - 1].next = valor
+        end
+        @final += 1
+    end
+    
     def insert(index, *valores)
         var = 0
         val = valores
@@ -29,14 +37,6 @@ class List
     
     def unshift(valor)
         @lista.unshift Node.new(valor, @lista[0].value)
-        @final += 1
-    end
-    
-    def insert(index, valor)
-        @lista.insert(index, Node.new(valor, @lista[index].value))
-        if(index - 1 >= 0)
-            @lista[index - 1].next = valor
-        end
         @final += 1
     end
     
