@@ -60,6 +60,8 @@ describe Examen do
       @l1.insert(1, 3,4,5)
       @l1.lista.length.should eq(4)
     end
+    it "Debe existir una lista con su cabeza" do 
+      @l1.lista[0].value == "Raiz"
   end
-  
+  end
 end
