@@ -1,5 +1,6 @@
 require 'examen'
 
+
 describe Examen do
     before :each do
         @p1 = Pregunta.new("Enunciado", ["a", "b", "c", "d"])
@@ -37,6 +38,9 @@ describe Examen do
 end
 
 describe Examen do
+  before :each do
+    @l1 = List.new("Raiz")
+  end
   describe "Node" do 
     it "Debe existir un Nodo de la lista con sus datos y su siguiente" do 
       @l1.lista[0].value != nil

@@ -5,4 +5,11 @@ class List
         @lista = [Node.new(valor, nil)]
         @final = @lista.length-1
     end
+
+#Métodos de borrado
+    def shift
+        @lista.shift
+        @final = final - 1
+    end
+    
 end
