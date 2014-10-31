@@ -15,7 +15,7 @@ class Pregunta
             mostrar = mostrar + @respuestas[var].to_s + " \n "
             var +=1
         end
-        puts mostrar
+        mostrar
     end
     
 end

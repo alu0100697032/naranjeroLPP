@@ -18,13 +18,13 @@ describe Examen do
     end
     
     describe "Getter de enunciado" do
-      it "devuelve el valor de p1.enunciado" do
+      it "Devuelve el valor de p1.enunciado" do
         @p1.enunciado == "Enunciado"
       end
   end
   
   describe "Getter de respuestas" do  
-      it "devuelve el valor de p1.respuestas" do
+      it "Devuelve el valor de p1.respuestas" do
         @p1.respuestas == ["a", "b", "c", "d"]
       end
   end
@@ -36,4 +36,12 @@ describe Examen do
   end
 end
 
+describe Examen do
+  describe "Node" do 
+    it "Debe existir un Nodo de la lista con sus datos y su siguiente" do 
+      @l1.lista[0].value != nil
+      @l1.lista[0].next == nil
+    end
+  end
+end
 
