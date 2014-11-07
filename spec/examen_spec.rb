@@ -52,18 +52,18 @@ describe Examen do
     it "Se extrae el primer elemento de la lista" do 
       @l1.push(8)
       @l1.shift
-      @l1.raiz.value.should eq(8)
+      expect(@l1.raiz.value).to eq(8)
     end
     it "Se puede insertar un elemento" do 
       @l1.push(8)
-      @l1.tail.value = (8)
+      expect(@l1.tail.value).to eq(8)
     end
     it "Se pueden insertar varios elementos" do 
       @l1.insert(3,4,5)
-      @l1.tail.value.should eq(5)
+      expect(@l1.tail.value).to eq(5)
     end
     it "Debe existir una lista con su cabeza" do 
-      @l1.raiz.value == "Raiz"
+      expect(@l1.raiz.value).to eq("Raiz")
   end
   end
 end

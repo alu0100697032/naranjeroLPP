@@ -5,3 +5,6 @@ gemspec
 gem 'rspec'
 gem 'rake'
 
+gem 'guard'
+gem 'guard-rspec'
+gem 'guard-bundler'
