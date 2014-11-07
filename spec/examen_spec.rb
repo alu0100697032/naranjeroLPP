@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'examen'
+require 'spec_helper'
 
 
 describe Examen do
