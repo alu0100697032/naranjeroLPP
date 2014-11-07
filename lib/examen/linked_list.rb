@@ -1,14 +1,14 @@
-Node = Struct.new(:value, :next)
+Node = Struct.new(:value, :next, :previous)
 class List
-    attr_accessor :raiz, :tail
+    attr_accessor :raiz, :tail, :size
     def initialize(valor)
-        @raiz = Node.new(valor, nil)
+        @raiz = Node.new(valor, nil, nil)
         @tail = @raiz
     end
 
 #Métodos de insersión
     def push(valor)
-        @tail.next = Node.new(valor, nil)
+        @tail.next = Node.new(valor, nil, @tail)
         @tail = @tail.next
     end
     
@@ -24,6 +24,7 @@ class List
 #Métodos de borrado
     def shift
         @raiz = @raiz.next
+        @raiz.previous = nil
     end
     
 end
