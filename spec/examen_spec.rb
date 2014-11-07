@@ -72,10 +72,10 @@ describe Examen do
   describe "Relacion de preguntas" do
       before :each do
       @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores")
-      @p2 = Pregunta.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", "a) Cierto","b) Falso")
+      @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }")
       @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores")
       @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end","a) Una instancia de la clase Class","b) Una constante","c) Un Objeto","d) Ninguna de las anteriores")
-      @p5 = Pregunta.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego","a) Cierto","b) Falso")      
+      @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego")       
       end 
       it "Enunciado y respuestas pregunta 1" do
         @p1.enunciado.should eq("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots")
