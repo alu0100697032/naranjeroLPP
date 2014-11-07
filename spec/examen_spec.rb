@@ -118,5 +118,14 @@ describe Examen do
         expect(@p5.respuestas[1]).to eq("b) Falso")
         expect(@p5.to_s).to eq("5.-) Es apropiado que una clase Tablero herede de una clase Juego \n a) Cierto \n b) Falso")
       end 
+      it "Comprobación de herencia de una pregunta de verdadero falso"do
+        expect(@p5.is_a?Pregunta).to eq(true)
+      end
+      it "Comprobacion de clase de una pregunta de verdadero falso"do
+        expect(@p5.instance_of?Verdadero_Falso).to eq(true)
+      end
+      it "Comprobacion de clase de una pregunta de selección simple"do
+        expect(@p4.instance_of?Verdadero_Falso).to eq(false)
+      end
   end
 end 
