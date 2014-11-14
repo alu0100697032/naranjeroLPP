@@ -21,10 +21,19 @@ class List
         end
     end
     
+    def pop (valor)
+        @raiz.previous = Node.new(valor, @raiz, nil)
+        @raiz = @raiz.previous
+    end
+    
 #Métodos de borrado
     def shift
         @raiz = @raiz.next
         @raiz.previous = nil
     end
     
+    def pull
+        @tail = @tail.previous
+        @tail.next = nil
+    end
 end

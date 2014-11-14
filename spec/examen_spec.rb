@@ -37,10 +37,12 @@ describe Pregunta do
         expect(@p1.to_s).to eq("Enunciado \n a \n b \n c \n d")
       end
   end
+  describe "La clase es comparable" do
+      it "La pregunta 1 es más dificil que la pregunta 2" do
+        expect(@p1.dificultad > @p2.dificultad).to eq(true)
+      end
+  end
 end
-
-
-
 
 
 describe List do
@@ -82,68 +84,34 @@ describe List do
       @l1.insert(8, 7, 6)
       expect(@l1.raiz.previous).to eq(nil) 
     end
+    it "La lista está doblemente enlazada: pop" do 
+      @l1.pop(1)
+      expect(@l1.raiz.value).to eq(1) 
+    end
+    it "La lista está doblemente enlazada: pull" do 
+      @l1.pop(1)
+      @l1.pull
+      expect(@l1.raiz.value).to eq(1) 
+    end
   end
 end
-
-
-
 
 describe Examen do   
   describe "Relacion de preguntas" do
       before :each do
-      @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores")
-      @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }")
-      @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores")
-      @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end","a) Una instancia de la clase Class","b) Una constante","c) Un Objeto","d) Ninguna de las anteriores")
-      @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego")      
+        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", 1, "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores")
+        @p2 = Pregunta.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 1, "a) Cierto","b) Falso")
+        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", 1, "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores")
+        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", 1,"a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores")
+        @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1)      
+        @lista_preguntas = List.new(@p1)
+        @lista_preguntas.insert(@p2, @p3, @p4, @p5)
       end 
-      it "Enunciado y respuestas pregunta 1" do
-        expect(@p1.enunciado).to eq("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots")
-        expect(@p1.respuestas[0]).to eq("a) #<Xyz:0xa000208>")
-        expect(@p1.respuestas[1]).to eq("b) nil")
-        expect(@p1.respuestas[2]).to eq("c) 0")
-        expect(@p1.respuestas[3]).to eq("d) Ninguna de las anteriores")
-        expect(@p1.to_s).to eq("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots \n a) #<Xyz:0xa000208> \n b) nil \n c) 0 \n d) Ninguna de las anteriores")
+      it "Estructura de la lista: la cabeza es correcta" do
+        expect(@lista_preguntas.raiz.value).to eq(@p1)
       end
-      it "Enunciado y respuestas pregunta 2" do
-        expect(@p2.enunciado).to eq("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }")
-        expect(@p2.respuestas[0]).to eq("a) Cierto")
-        expect(@p2.respuestas[1]).to eq("b) Falso")
-        expect(@p2.to_s).to eq("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t } \n a) Cierto \n b) Falso")
-      end 
-      it "Enunciado y respuestas pregunta 3" do
-        expect(@p3.enunciado).to eq("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi")
-        expect(@p3.respuestas[0]).to eq("a) 1")
-        expect(@p3.respuestas[1]).to eq("b) bob")
-        expect(@p3.respuestas[2]).to eq("c) hey!")
-        expect(@p3.respuestas[3]).to eq("d) Ninguna de las anteriores")
-        expect(@p3.to_s).to eq("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi \n a) 1 \n b) bob \n c) hey! \n d) Ninguna de las anteriores")
-      end 
-      it "Enunciado y respuestas pregunta 4" do
-        expect(@p4.enunciado).to eq("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end")
-        expect(@p4.respuestas[0]).to eq("a) Una instancia de la clase Class")
-        expect(@p4.respuestas[1]).to eq("b) Una constante")
-        expect(@p4.respuestas[2]).to eq("c) Un Objeto")
-        expect(@p4.respuestas[3]).to eq("d) Ninguna de las anteriores")
-        expect(@p4.to_s).to eq("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end \n a) Una instancia de la clase Class \n b) Una constante \n c) Un Objeto \n d) Ninguna de las anteriores")
-      end 
-      it "Enunciado y respuestas pregunta 5" do
-        expect(@p5.enunciado).to eq("5.-) Es apropiado que una clase Tablero herede de una clase Juego")
-        expect(@p5.respuestas[0]).to eq("a) Cierto")
-        expect(@p5.respuestas[1]).to eq("b) Falso")
-        expect(@p5.to_s).to eq("5.-) Es apropiado que una clase Tablero herede de una clase Juego \n a) Cierto \n b) Falso")
-      end 
-      it "Comprobación de herencia de una pregunta de verdadero falso"do
-        expect(@p5.is_a?Pregunta).to eq(true)
-      end
-      it "Comprobacion de clase de una pregunta de verdadero falso"do
-        expect(@p5.instance_of?Verdadero_Falso).to eq(true)
-      end
-      it "Comprobacion de clase de una pregunta de selección simple"do
-        expect(@p4.instance_of?Verdadero_Falso).to eq(false)
-      end
-      it "Comprobacion de clase de una pregunta de selección simple"do
-        expect(@p4.is_a?Pregunta).to eq(true)
+      it "Estructura de la lista: la cola es correcta" do
+        expect(@lista_preguntas.tail.value).to eq(@p5)
       end
   end
 end 
