@@ -7,6 +7,7 @@ describe Pregunta do
     before :each do
         @p1 = Pregunta.new("Enunciado", "a", "b", "c", "d", 3)
         @p2 = Pregunta.new("Enunciado", "a", "b", "c", "d", 2)
+        @p3 = Pregunta.new("Enunciado", "a", "b", "c", "d", 4)
     end
     describe "La pregunta es coherente" do
         it "Existe enunciado" do
@@ -38,10 +39,21 @@ describe Pregunta do
         expect(@p1.to_s).to eq("Enunciado \n a \n b \n c \n d")
       end
   end
-  #PRACTICA 8
+  
+  ###################PRACTICA 8#########################
+  
   describe "La clase es comparable" do
       it "La pregunta 1 es más dificil que la pregunta 2" do
         expect(@p1 > @p2).to eq(true)
+      end
+      it "La pregunta 2 no es más dificil que la pregunta 1" do
+        expect(@p1 < @p2).to eq(false)
+      end
+      it "La pregunta 2 no es igual de dificil que la pregunta 1" do
+        expect(@p1 == @p2).to eq(false)
+      end
+      it "La pregunta 1 esta entre el nivel 1 y 3" do
+        expect(@p1.between?(@p2, @p3)).to eq(true)
       end
   end
 end
@@ -116,11 +128,15 @@ describe Examen do
       it "Estructura de la lista: la cola es correcta" do
         expect(@lista_preguntas.tail.value).to eq(@p5)
       end
+      ###################PRACTICA 8#########################
       it "Modulo ENUMERABLE" do
         expect(@lista_preguntas.count).to eq(5)
         expect(@lista_preguntas.max).to eq(@p1)
         expect(@lista_preguntas.min).to eq(@p5)
         expect(@lista_preguntas.sort).to eq([@p5,@p4,@p3,@p2,@p1])
+        expect(@lista_preguntas.drop(4)).to eq([@p5])
+        expect(@lista_preguntas.first).to eq(@p1)
+        expect(@lista_preguntas.take(2)).to eq([@p1,@p2])
       end
   end
 end 
