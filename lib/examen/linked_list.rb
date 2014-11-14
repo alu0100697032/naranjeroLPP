@@ -1,11 +1,22 @@
-Node = Struct.new(:value, :next, :previous)
 class List
+    include Enumerable
+    
     attr_accessor :raiz, :tail, :size
     def initialize(valor)
         @raiz = Node.new(valor, nil, nil)
         @tail = @raiz
     end
 
+#Métodos enumerables
+
+    def each 
+        var = @raiz
+        while var != nil do
+            yield var.value
+            var = var.next
+        end
+    end
+    
 #Métodos de insersión
     def push(valor)
         @tail.next = Node.new(valor, nil, @tail)
