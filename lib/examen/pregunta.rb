@@ -1,11 +1,12 @@
 #encoding: UTF-8
 class Pregunta 
     
-    attr_reader :enunciado, :respuestas
+    attr_reader :enunciado, :respuestas, :dificultad
     
-    def initialize (enun, *resp)
+    def initialize (enun, *resp, dificultad)
         @enunciado = enun
         @respuestas = resp 
+        @dificultad = dificultad
     end
     
     def to_s
@@ -18,6 +19,9 @@ class Pregunta
         mostrar
     end
     
+    def <=> (anOther)
+        dificultad <=> anOther.dificultad
+    end
 end
 
 

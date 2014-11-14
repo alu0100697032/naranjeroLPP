@@ -5,7 +5,8 @@ require 'spec_helper'
 
 describe Pregunta do
     before :each do
-        @p1 = Pregunta.new("Enunciado", "a", "b", "c", "d")
+        @p1 = Pregunta.new("Enunciado", "a", "b", "c", "d", 3)
+        @p2 = Pregunta.new("Enunciado", "a", "b", "c", "d", 2)
     end
     describe "La pregunta es coherente" do
         it "Existe enunciado" do
@@ -37,6 +38,7 @@ describe Pregunta do
         expect(@p1.to_s).to eq("Enunciado \n a \n b \n c \n d")
       end
   end
+  #PRACTICA 8
   describe "La clase es comparable" do
       it "La pregunta 1 es más dificil que la pregunta 2" do
         expect(@p1.dificultad > @p2.dificultad).to eq(true)
@@ -99,10 +101,10 @@ end
 describe Examen do   
   describe "Relacion de preguntas" do
       before :each do
-        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", 1, "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores")
-        @p2 = Pregunta.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 1, "a) Cierto","b) Falso")
-        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", 1, "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores")
-        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", 1,"a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores")
+        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 1)
+        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 1)
+        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 1)
+        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 1)
         @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1)      
         @lista_preguntas = List.new(@p1)
         @lista_preguntas.insert(@p2, @p3, @p4, @p5)
