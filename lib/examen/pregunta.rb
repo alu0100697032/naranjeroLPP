@@ -1,5 +1,6 @@
 #encoding: UTF-8
 class Pregunta 
+    include Comparable
     
     attr_reader :enunciado, :respuestas, :dificultad
     
