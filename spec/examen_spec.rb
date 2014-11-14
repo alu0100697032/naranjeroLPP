@@ -41,7 +41,7 @@ describe Pregunta do
   #PRACTICA 8
   describe "La clase es comparable" do
       it "La pregunta 1 es más dificil que la pregunta 2" do
-        expect(@p1.dificultad > @p2.dificultad).to eq(true)
+        expect(@p1 > @p2).to eq(true)
       end
   end
 end
