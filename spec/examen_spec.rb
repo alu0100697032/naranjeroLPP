@@ -102,10 +102,10 @@ describe Examen do
   #Corregido de la practica 7 :)
   describe "Relacion de preguntas" do
       before :each do
-        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 1)
-        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 1)
-        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 1)
-        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 1)
+        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5)
+        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 4)
+        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 3)
+        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 2)
         @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1)      
         @lista_preguntas = List.new(@p1)
         @lista_preguntas.insert(@p2, @p3, @p4, @p5)
@@ -115,6 +115,12 @@ describe Examen do
       end
       it "Estructura de la lista: la cola es correcta" do
         expect(@lista_preguntas.tail.value).to eq(@p5)
+      end
+      it "Modulo ENUMERABLE" do
+        expect(@lista_preguntas.count).to eq(5)
+        expect(@lista_preguntas.max).to eq(@p1)
+        expect(@lista_preguntas.min).to eq(@p5)
+        expect(@lista_preguntas.sort).to eq([@p5,@p4,@p3,@p2,@p1])
       end
   end
 end 
