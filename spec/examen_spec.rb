@@ -99,7 +99,7 @@ describe List do
 end
 
 describe Examen do   
-  #Corregido de la practica 7
+  #Corregido de la practica 7 :)
   describe "Relacion de preguntas" do
       before :each do
         @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 1)
