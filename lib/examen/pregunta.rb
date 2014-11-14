@@ -23,7 +23,11 @@ class Pregunta
     def <=> (anOther)
         dificultad <=> anOther.dificultad
     end
-end
+    
+    def ==(anOther)
+        dificultad == anOther.dificultad && @enunciado == anOther.enunciado
+    end
+ end
 
 
 

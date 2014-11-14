@@ -49,6 +49,9 @@ describe Pregunta do
       it "La pregunta 2 no es más dificil que la pregunta 1" do
         expect(@p1 < @p2).to eq(false)
       end
+      it "La pregunta 2 no es más dificil que la pregunta 1" do
+        expect(@p2 < @p1).to eq(true)
+      end
       it "La pregunta 2 no es igual de dificil que la pregunta 1" do
         expect(@p1 == @p2).to eq(false)
       end
