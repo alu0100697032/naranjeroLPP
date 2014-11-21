@@ -5,9 +5,9 @@ require 'spec_helper'
 
 describe Pregunta do
     before :each do
-        @p1 = Pregunta.new("Enunciado", "a", "b", "c", "d", 3)
-        @p2 = Pregunta.new("Enunciado", "a", "b", "c", "d", 2)
-        @p3 = Pregunta.new("Enunciado", "a", "b", "c", "d", 4)
+        @p1 = Pregunta.new("Enunciado", "a", "b", "c", "d", 3, "a")
+        @p2 = Pregunta.new("Enunciado", "a", "b", "c", "d", 2, "a")
+        @p3 = Pregunta.new("Enunciado", "a", "b", "c", "d", 4, "a")
     end
     describe "La pregunta es coherente" do
         it "Existe enunciado" do
@@ -121,11 +121,11 @@ describe Examen do
   #Corregido de la practica 7 :)
   describe "Relacion de preguntas" do
       before :each do
-        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5)
-        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 4)
-        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 3)
-        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 2)
-        @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1)      
+        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5, "a")
+        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 4, "a")
+        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 3, "a")
+        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 2, "a")
+        @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1, "a")      
         @lista_preguntas = List.new(@p1)
         @lista_preguntas.insert(@p2, @p3, @p4, @p5)
       end 
@@ -150,20 +150,26 @@ describe Examen do
 describe Examen do   
   describe "Relacion de preguntas" do
       before :each do 
-        @p1 = Pregunta.new("Enunciado 1","a","b","c",1)
-        @p2 = Pregunta.new("Enunciado 2","a","b","c",1)
-        @p3 = Pregunta.new("Enunciado 3","a","b","c",1)
-        @p4 = Pregunta.new("Enunciado 4","a","b","c",1)
-        @p5 = Pregunta.new("Enunciado 5","a","b","c",1)
+        @p1 = Pregunta.new("Enunciado 1","a","b","c",1, 0)
+        @p2 = Pregunta.new("Enunciado 2","a","b","c",1, 1)
+        @p3 = Pregunta.new("Enunciado 3","a","b","c",1, 0)
+        @p4 = Pregunta.new("Enunciado 4","a","b","c",1, 2)
+        @p5 = Pregunta.new("Enunciado 5","a","b","c",1, 1)
         @r1 = 0
         @r2 = 1
         @r3 = 0 
         @r4 = 2 
         @r5 = 1
         @ex1 = Exam.new("alu0100697032", @p1, @r1, @p2, @r2, @p3, @r3, @p4, @r4, @p5, @r5)
+        @l1 = List.new(true)
+        @l1.insert(true,true,true,true)
       end
       it "Comportamiento del to_s"do 
         expect(@ex1.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@p2.to_s+"\n"+@p3.to_s+"\n"+@p4.to_s+"\n"+@p5.to_s+"\n"+@r1.to_s+"\n"+@r2.to_s+"\n"+@r3.to_s+"\n"+@r4.to_s+"\n"+@r5.to_s+"\n")
+      end
+      it "Respuestas correctas" do
+        @ex1.correcion
+        expect(@ex1.respuestasCorregidas.to_s).to eq(@l1.to_s)
       end
    end
 end

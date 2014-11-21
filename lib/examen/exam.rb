@@ -2,7 +2,7 @@ class Exam
     
     
 
-    attr_reader :alu, :listaPreguntas, :listaRespuestas, :respuestasCorregidas
+    attr_reader :alu, :listaPreguntas, :listaRespuestas, :listaCorrectas, :respuestasCorregidas
     
     def initialize (alu, *preguntas_respuestas)
         @alu = alu
@@ -16,6 +16,13 @@ class Exam
             cont += 1
         end
         
+        var = @listaPreguntas.raiz
+        @listaCorrectas = List.new(var.value.respCorrecta)
+        var = var.next
+        while var != nil do
+            @listaCorrectas.push(var.value.respCorrecta)
+            var = var.next
+        end
     end
     
     def to_s
@@ -27,22 +34,27 @@ class Exam
     end 
     
     def correcion
-        var = @listaPreguntas.raiz
-        respuestasCorrectas = nil
-        while var != nil do
-            respuestasCorrectas.push(@listaPreguntas.value.respCorrecta)
-            var = var.next
-        end
-        cont = 0
-        while respuestasCorrectas.length > cont do
-            if(respuestasCorrectas[cont]==@listaRespuestas[cont])
-                respuestasCorregidas.push(true)
-            else
-                respuestasCorregidas.push(false)
-            end 
-        cont +=1
         
+        var=@listaCorrectas.raiz
+        var1=@listaRespuestas.raiz
+        if (var.value==var1.value)
+            @respuestasCorregidas = List.new(true)
+        else
+            @respuestasCorregidas = List.new(false)
         end
+        var=var.next
+        var1=var1.next
+        
+        while var1 != nil do
+            if (var.value==var1.value)
+                @respuestasCorregidas.push(true)
+            else
+                @respuestasCorregidas.push(false)
+            end
+            var=var.next
+            var1=var1.next
+        end
+        
         
     end 
     
