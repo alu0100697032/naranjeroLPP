@@ -142,4 +142,25 @@ describe Examen do
         expect(@lista_preguntas.take(2)).to eq([@p1,@p2])
       end
   end
+  
+describe Examen do   
+  describe "Relacion de preguntas" do
+      before :each do 
+        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5)
+        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 4)
+        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 3)
+        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 2)
+        @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1)
+        @r1 = 0
+        @r2 = 1
+        @r3 = 0 
+        @r4 = 2 
+        @r5 = 1
+        @ex1 = Exam.new("Alu", [@p1, @p2, @p3, @p4, @p5], [@r1, @r2, @r3, @r4, @r5])
+      end
+      it "Comportamiento del to_s"do 
+        expect(@ex1.to_s).to eq("alu0100697032 \n Preguntas Respuestas")
+      end
+   end
+end
 end 
