@@ -2,12 +2,13 @@
 class Pregunta 
     include Comparable
     
-    attr_reader :enunciado, :respuestas, :dificultad
+    attr_reader :enunciado, :respuestas, :dificultad, :respCorrecta
     
-    def initialize (enun, *resp, dificultad)
+    def initialize (enun, *resp, dificultad, respuestaCorrecta)
         @enunciado = enun
         @respuestas = resp 
         @dificultad = dificultad
+        @respCorrecta = respuestaCorrecta
     end
     
     def to_s
