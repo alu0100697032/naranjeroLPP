@@ -50,11 +50,12 @@ class List
     
 #to_s
     def to_s 
-        var=@raiz
-        cadena = nil
-        while var.value !=nil do
-            cadena += "#{@var.value}\n"
-            var=var.next
+        var = @raiz
+        cadena = ""
+        while var != nil do
+            cadena = cadena + "#{var.value.to_s}\n"
+            var = var.next
         end
+        cadena
     end 
 end
