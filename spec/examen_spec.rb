@@ -163,6 +163,7 @@ describe Examen do
         @ex1 = Exam.new("alu0100697032", @p1, @r1, @p2, @r2, @p3, @r3, @p4, @r4, @p5, @r5)
         @l1 = List.new(true)
         @l1.insert(true,true,true,true)
+        @interfaz = Interfaz.new(@ex1)
       end
       it "Comportamiento del to_s"do 
         expect(@ex1.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@p2.to_s+"\n"+@p3.to_s+"\n"+@p4.to_s+"\n"+@p5.to_s+"\n"+@r1.to_s+"\n"+@r2.to_s+"\n"+@r3.to_s+"\n"+@r4.to_s+"\n"+@r5.to_s+"\n")
@@ -170,6 +171,9 @@ describe Examen do
       it "Respuestas correctas" do
         @ex1.correcion
         expect(@ex1.respuestasCorregidas.to_s).to eq(@l1.to_s)
+      end
+      it"Comportamiento interfaz"do
+        expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
       end
    end
 end
