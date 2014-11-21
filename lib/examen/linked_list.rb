@@ -2,11 +2,11 @@ class List
     include Enumerable
     
     attr_accessor :raiz, :tail, :size
+
     def initialize(valor)
         @raiz = Node.new(valor, nil, nil)
         @tail = @raiz
     end
-
 #Métodos enumerables
 
     def each 
@@ -22,7 +22,7 @@ class List
         @tail.next = Node.new(valor, nil, @tail)
         @tail = @tail.next
     end
-    
+
     def insert(*valores)
         var = 0
         val = valores
@@ -31,7 +31,7 @@ class List
             var += 1
         end
     end
-    
+  
     def pop (valor)
         @raiz.previous = Node.new(valor, @raiz, nil)
         @raiz = @raiz.previous
