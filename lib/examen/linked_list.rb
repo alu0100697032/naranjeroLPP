@@ -47,4 +47,14 @@ class List
         @tail = @tail.previous
         @tail.next = nil
     end
+    
+#to_s
+    def to_s 
+        var=@raiz
+        cadena = nil
+        while var.value !=nil do
+            cadena += "#{@var.value}\n"
+            var=var.next
+        end
+    end 
 end

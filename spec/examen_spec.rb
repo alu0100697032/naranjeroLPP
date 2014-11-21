@@ -110,6 +110,9 @@ describe List do
       @l1.pull
       expect(@l1.raiz.value).to eq(1) 
     end
+    it "probando to_s" do
+      @l1.push("Pregunta 1")
+      expect(@l1.to_s).to eq("Raiz\nPregunta 1\n")
   end
 end
 
@@ -163,4 +166,7 @@ describe Examen do
       end
    end
 end
+
+
+
 end 
