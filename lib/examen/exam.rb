@@ -1,7 +1,5 @@
 class Exam
     
-    
-
     attr_reader :alu, :listaPreguntas, :listaRespuestas, :listaCorrectas, :respuestasCorregidas
     
     def initialize (alu, *preguntas_respuestas)

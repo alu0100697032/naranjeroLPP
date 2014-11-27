@@ -121,13 +121,20 @@ describe Examen do
   #Corregido de la practica 7 :)
   describe "Relacion de preguntas" do
       before :each do
-        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5, "a")
-        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 4, "a")
-        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 3, "a")
-        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 2, "a")
-        @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1, "a")      
+        @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5, 0)
+        @p2 = Verdadero_Falso.new("2.-) La sigiente definición de un hash en Ruby es válida: \n\t hash_raro = { \n\t\t [1,2,3] => Object.new(), \n\t\t Has.new => :toto \n\t }", 4, 1)
+        @p3 = Pregunta.new("3.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Array \n\t\t def say_hi \n\t\t\t \"HEY!\" \n\t\t end \n\t end \n\t p [1, \"bob\"].say_hi", "a) 1","b) bob","c) hey!","d) Ninguna de las anteriores", 3, 0)
+        @p4 = Pregunta.new("4.-) ¿Cuál es el tipo del objeto en el siguiente código Ruby? \n\t class Objeto \n\t end", "a) Una instancia de la clase Class","b) Una constante", "c) Un Objeto","d) Ninguna de las anteriores", 2, 2)
+        @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1, 1)      
         @lista_preguntas = List.new(@p1)
         @lista_preguntas.insert(@p2, @p3, @p4, @p5)
+        @r1 = 0
+        @r2 = 1
+        @r3 = 0 
+        @r4 = 2 
+        @r5 = 1
+        @ex1 = Exam.new("alu0100697032", @p1, @r1, @p2, @r2, @p3, @r3, @p4, @r4, @p5, @r5)
+        @interfaz = Interfaz.new(@ex1)
       end 
       it "Estructura de la lista: la cabeza es correcta" do
         expect(@lista_preguntas.raiz.value).to eq(@p1)
@@ -144,6 +151,9 @@ describe Examen do
         expect(@lista_preguntas.drop(4)).to eq([@p5])
         expect(@lista_preguntas.first).to eq(@p1)
         expect(@lista_preguntas.take(2)).to eq([@p1,@p2])
+      end
+      it"Comportamiento interfaz"do
+        expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
       end
   end
   
@@ -177,7 +187,5 @@ describe Examen do
       end
    end
 end
-
-
 
 end 
