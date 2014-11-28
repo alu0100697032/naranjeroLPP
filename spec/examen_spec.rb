@@ -161,11 +161,11 @@ describe Exam do
     end
     
     it "Lista Preguntas" do
-      expect(@e1.listaPreguntas).to eq(@lPreguntas)
+      expect(@e1.listaPreguntas.to_s).to eq(@lPreguntas.to_s)
     end
     
     it "Lista Respuestas Correctas" do
-      expect(@e1.listaCorrectas).to eq(@lCorrectas)
+      expect(@e1.listaCorrectas.to_s).to eq(@lCorrectas.to_s)
     end
     
     it "to_s" do
@@ -188,12 +188,12 @@ describe Interfaz do
       @r4 = 2
       @r5 = 1
       @e1 = Exam.new(@p1,@p2,@p3,@p4,@p5)
-      @lRespuestas = List.new(@r1)
-      @lRespuestas.insert(@r2,@r3,@r4,@r5)
+      @lRespuestas = List.new(0)
+      @lRespuestas.insert(1,0,2,1)
       @lCorregidas = List.new(true)
       @lCorregidas.insert(true,true,true,true)
       @alu = "Alu0100837353"
-      @i1 = Interfaz.new(@alu,@e1,@lRespuestas)
+      @i1 = Interfaz.new(@alu,@e1,@r1,@r2,@r3,@r4,@r5)
     end
     it "Alu" do
       expect(@i1.alu).to eq(@alu)
@@ -204,15 +204,16 @@ describe Interfaz do
     end
     
     it "Lista Respuestas del Alu" do
-      expect(@e1.listaRespuestas).to eq(@lRespuestas)
+      expect(@i1.listaRespuestas.to_s).to eq(@lRespuestas.to_s)
     end
     
     it "Lis de respuestas Corregidas" do
-      expect(@e1.respuestasCorregidas).to eq(@lCorregidas)
+      @i1.correcion
+      expect(@i1.respuestasCorregidas.to_s).to eq(@lCorregidas.to_s)
     end
     
     it "to_s" do
-      expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
+      expect(@i1.to_s).to eq("Alu0100837353\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
     end
   end
 end

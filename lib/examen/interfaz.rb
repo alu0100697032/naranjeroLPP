@@ -4,14 +4,19 @@ class Interfaz
     def initialize(alu, exam, *listaRespuestasAlumno)
         @alu = alu
         @examen = exam
-        @listaRespuestas = listaRespuestasAlumno
+        @listaRespuestas = List.new(listaRespuestasAlumno[0])
+        cont = 1
+        while listaRespuestasAlumno.length > cont 
+            @listaRespuestas.push(listaRespuestasAlumno[cont])
+            cont += 1
+        end
     end
     
     
     def correcion
         
         var=@examen.listaCorrectas.raiz
-        var1=@examen.listaRespuestas.raiz
+        var1=@listaRespuestas.raiz
         if (var.value==var1.value)
             @respuestasCorregidas = List.new(true)
         else
