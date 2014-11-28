@@ -1,17 +1,45 @@
 class Interfaz
-    attr_reader :examen
+    attr_reader :alu, :examen, :listaRespuestas, :respuestasCorregidas
     
-    def initialize(exam)
+    def initialize(alu, exam, *listaRespuestasAlumno)
+        @alu = alu
         @examen = exam
+        @listaRespuestas = listaRespuestasAlumno
     end
     
+    
+    def correcion
+        
+        var=@examen.listaCorrectas.raiz
+        var1=@examen.listaRespuestas.raiz
+        if (var.value==var1.value)
+            @respuestasCorregidas = List.new(true)
+        else
+            @respuestasCorregidas = List.new(false)
+        end
+        var=var.next
+        var1=var1.next
+        
+        while var1 != nil do
+            if (var.value==var1.value)
+                @respuestasCorregidas.push(true)
+            else
+                @respuestasCorregidas.push(false)
+            end
+            var=var.next
+            var1=var1.next
+        end
+        
+        
+    end 
+    
     def to_s
-        @examen.correcion
-        cadena = "#{@examen.alu}\n"
+        correcion
+        cadena = "#{@alu}\n"
         
         var1 = @examen.listaPreguntas.raiz
-        var2 = @examen.listaRespuestas.raiz
-        var3 = @examen.respuestasCorregidas.raiz
+        var2 = @listaRespuestas.raiz
+        var3 = @respuestasCorregidas.raiz
         
         while var1 != nil do 
             cadena = cadena + var1.value.to_s + "\n"

@@ -185,6 +185,7 @@ describe Examen do
       it"Comportamiento interfaz"do
         expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
       end
+      
    end
 end
 
