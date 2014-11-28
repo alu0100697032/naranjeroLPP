@@ -61,7 +61,6 @@ describe Pregunta do
   end
 end
 
-
 describe List do
   before :each do
     @l1 = List.new("Raiz")
@@ -118,7 +117,6 @@ describe List do
 end
 
 describe Examen do   
-  #Corregido de la practica 7 :)
   describe "Relacion de preguntas" do
       before :each do
         @p1 = Pregunta.new("1.-) ¿Cuál es la salida del siguiente código Ruby? \n\t class Xyz \n\t\t def pots \n\t\t\t @nice \n\t\t end \n\t end \n\n\t xyz = Xyz.new \n\t p xyz.pots", "a) #<Xyz:0xa000208>", "b) nil", "c) 0", "d) Ninguna de las anteriores", 5, 0)
@@ -128,13 +126,6 @@ describe Examen do
         @p5 = Verdadero_Falso.new("5.-) Es apropiado que una clase Tablero herede de una clase Juego", 1, 1)      
         @lista_preguntas = List.new(@p1)
         @lista_preguntas.insert(@p2, @p3, @p4, @p5)
-        @r1 = 0
-        @r2 = 1
-        @r3 = 0 
-        @r4 = 2 
-        @r5 = 1
-        @ex1 = Exam.new("alu0100697032", @p1, @r1, @p2, @r2, @p3, @r3, @p4, @r4, @p5, @r5)
-        @interfaz = Interfaz.new(@ex1)
       end 
       it "Estructura de la lista: la cabeza es correcta" do
         expect(@lista_preguntas.raiz.value).to eq(@p1)
@@ -142,7 +133,6 @@ describe Examen do
       it "Estructura de la lista: la cola es correcta" do
         expect(@lista_preguntas.tail.value).to eq(@p5)
       end
-      ###################PRACTICA 8#########################
       it "Modulo ENUMERABLE" do
         expect(@lista_preguntas.count).to eq(5)
         expect(@lista_preguntas.max).to eq(@p1)
@@ -152,41 +142,79 @@ describe Examen do
         expect(@lista_preguntas.first).to eq(@p1)
         expect(@lista_preguntas.take(2)).to eq([@p1,@p2])
       end
-      it"Comportamiento interfaz"do
-        expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
-      end
+      
   end
   
-describe Examen do   
-  describe "Relacion de preguntas" do
-      before :each do 
-        @p1 = Pregunta.new("Enunciado 1","a","b","c",1, 0)
-        @p2 = Pregunta.new("Enunciado 2","a","b","c",1, 1)
-        @p3 = Pregunta.new("Enunciado 3","a","b","c",1, 0)
-        @p4 = Pregunta.new("Enunciado 4","a","b","c",1, 2)
-        @p5 = Pregunta.new("Enunciado 5","a","b","c",1, 1)
-        @r1 = 0
-        @r2 = 1
-        @r3 = 0 
-        @r4 = 2 
-        @r5 = 1
-        @ex1 = Exam.new("alu0100697032", @p1, @r1, @p2, @r2, @p3, @r3, @p4, @r4, @p5, @r5)
-        @l1 = List.new(true)
-        @l1.insert(true,true,true,true)
-        @interfaz = Interfaz.new(@ex1)
-      end
-      it "Comportamiento del to_s"do 
-        expect(@ex1.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@p2.to_s+"\n"+@p3.to_s+"\n"+@p4.to_s+"\n"+@p5.to_s+"\n"+@r1.to_s+"\n"+@r2.to_s+"\n"+@r3.to_s+"\n"+@r4.to_s+"\n"+@r5.to_s+"\n")
-      end
-      it "Respuestas correctas" do
-        @ex1.correcion
-        expect(@ex1.respuestasCorregidas.to_s).to eq(@l1.to_s)
-      end
-      it"Comportamiento interfaz"do
-        expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
-      end
-      
-   end
+describe Exam do
+  describe "Examen" do
+    before :each do
+      @p1 = Pregunta.new("Enunciado 1", "a","b","c",1,0)
+      @p2 = Pregunta.new("Enunciado 2", "a","b","c",1,1)
+      @p3 = Pregunta.new("Enunciado 3", "a","b","c",1,0)
+      @p4 = Pregunta.new("Enunciado 4", "a","b","c",1,2)
+      @p5 = Pregunta.new("Enunciado 5", "a","b","c",1,1)
+      @e1 = Exam.new(@p1,@p2,@p3,@p4,@p5)
+      @lPreguntas = List.new(@p1)
+      @lPreguntas.insert(@p2,@p3,@p4,@p5)
+      @lCorrectas = List.new(0)
+      @lCorrectas.insert(1,0,2,1)
+    end
+    
+    it "Lista Preguntas" do
+      expect(@e1.listaPreguntas).to eq(@lPreguntas)
+    end
+    
+    it "Lista Respuestas Correctas" do
+      expect(@e1.listaCorrectas).to eq(@lCorrectas)
+    end
+    
+    it "to_s" do
+      expect(@e1.to_s).to eq(@lPreguntas.to_s)
+    end
+  end
+end
+
+describe Interfaz do
+  describe "Interfaz de Usuario" do
+    before :each do
+      @p1 = Pregunta.new("Enunciado 1", "a","b","c",1,0)
+      @p2 = Pregunta.new("Enunciado 2", "a","b","c",1,1)
+      @p3 = Pregunta.new("Enunciado 3", "a","b","c",1,0)
+      @p4 = Pregunta.new("Enunciado 4", "a","b","c",1,2)
+      @p5 = Pregunta.new("Enunciado 5", "a","b","c",1,1)
+      @r1 = 0
+      @r2 = 1
+      @r3 = 0
+      @r4 = 2
+      @r5 = 1
+      @e1 = Exam.new(@p1,@p2,@p3,@p4,@p5)
+      @lRespuestas = List.new(@r1)
+      @lRespuestas.insert(@r2,@r3,@r4,@r5)
+      @lCorregidas = List.new(true)
+      @lCorregidas.insert(true,true,true,true)
+      @alu = "Alu0100837353"
+      @i1 = Interfaz.new(@alu,@e1,@lRespuestas)
+    end
+    it "Alu" do
+      expect(@i1.alu).to eq(@alu)
+    end
+    
+    it "Examen" do
+      expect(@i1.examen).to eq(@e1)
+    end
+    
+    it "Lista Respuestas del Alu" do
+      expect(@e1.listaRespuestas).to eq(@lRespuestas)
+    end
+    
+    it "Lis de respuestas Corregidas" do
+      expect(@e1.respuestasCorregidas).to eq(@lCorregidas)
+    end
+    
+    it "to_s" do
+      expect(@interfaz.to_s).to eq("alu0100697032\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
+    end
+  end
 end
 
 end 
