@@ -179,6 +179,10 @@ describe Exam do
     it "Invertir preguntas de un examen mediante proc" do
       expect(@e1.invertir.is_a? Proc).to eq(true)
     end
+    
+    it "Invertir preguntas de un examen mediante proc" do
+      expect(@e1.invertir.call.to_s).to eq(@lPreguntas.invertirOrden.to_s)
+    end
   end
 end
 
@@ -223,6 +227,7 @@ describe Interfaz do
     it "to_s" do
       expect(@i1.to_s).to eq("Alu0100837353\n"+@p1.to_s+"\n"+@r1.to_s+"\n"+"true"+"\n"+@p2.to_s+"\n"+@r2.to_s+"\n"+"true"+"\n"+@p3.to_s+"\n"+@r3.to_s+"\n"+"true"+"\n"+@p4.to_s+"\n"+@r4.to_s+"\n"+"true"+"\n"+@p5.to_s+"\n"+@r5.to_s+"\n"+"true"+"\n")
     end
+    
   end
 end
 
