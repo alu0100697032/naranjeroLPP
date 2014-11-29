@@ -113,6 +113,10 @@ describe List do
       @l1.push("Pregunta 1")
       expect(@l1.to_s).to eq("Raiz\nPregunta 1\n")
     end
+    it "Invertir lista" do
+      @l1.insert(1,2,3,4)
+      expect(@l1.invertirOrden.raiz.next.value).to eq(3)
+    end
   end
 end
 

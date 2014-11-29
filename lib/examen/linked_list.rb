@@ -59,5 +59,17 @@ class List
         cadena
     end 
     
+#invertir lista
+
+    def invertirOrden
+        var = @tail
+        aux = List.new(var.value)
+        var = var.previous
+        while(var != nil)do
+            aux.push(var.value)
+            var = var.previous
+        end
+        aux 
+    end
     
 end
