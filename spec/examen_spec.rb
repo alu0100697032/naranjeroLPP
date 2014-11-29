@@ -175,6 +175,10 @@ describe Exam do
     it "to_s" do
       expect(@e1.to_s).to eq(@lPreguntas.to_s)
     end
+    
+    it "Invertir preguntas de un examen mediante proc" do
+      expect(@e1.invertir.is_a? Proc).to eq(true)
+    end
   end
 end
 
