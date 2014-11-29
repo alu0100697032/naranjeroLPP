@@ -25,4 +25,7 @@ class Exam
         
     end 
     
+    def invertir
+        Proc.new {@listaPreguntas.invertirOrden}
+    end
 end
