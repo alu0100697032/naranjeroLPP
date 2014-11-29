@@ -18,3 +18,8 @@ desc "Run RSpec code examples with html"
 task :html do 
     sh "rspec -Ilib -Ispec spec/examen_spec.rb --format html"
 end
+
+desc "Generando documentacion"
+task :rdoc do 
+    sh "rdoc --main rdoc/rdoc.rb"
+end
