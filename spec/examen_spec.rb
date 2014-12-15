@@ -235,12 +235,18 @@ describe Naranjero do
   describe "Clase Naranjero"do
    before :each do
      #recibe los parámetros altura, edad y contador
-    @n1 = Naranjero.new(1.8, 2, 1)
+    @n1 = Naranjero.new(0.5, 1, 0)
    end
    it "Atributos"do
-     expect(@n1.altura).to eq(1.8)
-     expect(@n1.edad).to eq(2)
-     expect(@n1.contador).to eq(1)
+     expect(@n1.altura).to eq(0.5)
+     expect(@n1.edad).to eq(1)
+     expect(@n1.contador).to eq(0)
+   end
+   it "uno_mas"do
+    @n1.uno_mas
+    expect(@n1.altura).to eq(0.6)
+    expect(@n1.edad).to eq(2)
+    expect(@n1.contador).to eq(0)
    end
   end
   end
