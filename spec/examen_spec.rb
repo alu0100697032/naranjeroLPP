@@ -236,6 +236,8 @@ describe Naranjero do
    before :each do
      #recibe los parámetros altura, edad y contador
     @n1 = Naranjero.new(0.5, 1, 0)
+    @n2 = Naranjero.new(1, 5, 1)
+    @n3 = Naranjero.new(5, 20, 100)
    end
    it "Atributos"do
      expect(@n1.altura).to eq(0.5)
@@ -247,6 +249,18 @@ describe Naranjero do
     expect(@n1.altura).to eq(0.6)
     expect(@n1.edad).to eq(2)
     expect(@n1.contador).to eq(0)
+   end
+   it"No hay naranjas"do
+    expect(@n1.recolectar_una).to eq("No hay naranjas")
+    expect(@n1.contador).to eq(0)
+   end
+   it"La naranja estaba deliciosa"do
+    expect(@n2.recolectar_una).to eq("La naranja estaba deliciosa")
+    expect(@n2.contador).to eq(0)
+   end
+   it"El árbol está muerto"do
+    expect(@n3.recolectar_una).to eq("El árbol está muerto")
+    expect(@n3.contador).to eq(0)
    end
   end
   end
