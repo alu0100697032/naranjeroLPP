@@ -7,4 +7,5 @@ module Examen
   require 'examen/node.rb'
   require 'examen/exam.rb'
   require 'examen/interfaz.rb'
+  require 'examen/naranjero.rb'
 end
