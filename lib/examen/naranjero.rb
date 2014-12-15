@@ -7,9 +7,9 @@ class Naranjero
         @contador = contador
         if(@edad > 100)
             @arbolVivo = false
-        else 
-            @albolVivo = true
-       end
+        else
+            @arbolVivo = true
+        end
     end
     
     def uno_mas
