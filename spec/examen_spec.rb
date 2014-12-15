@@ -237,18 +237,27 @@ describe Naranjero do
      #recibe los parámetros altura, edad y contador
     @n1 = Naranjero.new(0.5, 1, 0)
     @n2 = Naranjero.new(1, 5, 1)
-    @n3 = Naranjero.new(5, 20, 100)
+    @n3 = Naranjero.new(5, 100, 20)
    end
    it "Atributos"do
      expect(@n1.altura).to eq(0.5)
      expect(@n1.edad).to eq(1)
      expect(@n1.contador).to eq(0)
+     expect(@n1.arbolVivo).to eq(true)
+     expect(@n3.arbolVivo).to eq(false)
    end
    it "uno_mas"do
     @n1.uno_mas
     expect(@n1.altura).to eq(0.6)
     expect(@n1.edad).to eq(2)
     expect(@n1.contador).to eq(0)
+   end
+   it "uno_mas el árbol muere"do
+    @n3.uno_mas
+    expect(@n3.altura).to eq(5)
+    expect(@n3.edad).to eq(101)
+    expect(@n3.contador).to eq(0)
+    expect(@n3.arbolVivo).to eq(false)
    end
    it"No hay naranjas"do
     expect(@n1.recolectar_una).to eq("No hay naranjas")
