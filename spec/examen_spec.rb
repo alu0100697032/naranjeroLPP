@@ -244,7 +244,6 @@ describe Naranjero do
      expect(@n1.edad).to eq(1)
      expect(@n1.contador).to eq(0)
      expect(@n1.arbolVivo).to eq(true)
-     expect(@n3.arbolVivo).to eq(false)
    end
    it "uno_mas"do
     @n1.uno_mas
