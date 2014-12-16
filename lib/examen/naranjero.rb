@@ -42,6 +42,8 @@ class Naranjero
     def crecer
         if(arbolVivo)
             Thread.new { (100-@edad).times { sleep 0.1; uno_mas }}.join
+        else
+            arbolVivo
         end
     end
 end
