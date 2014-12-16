@@ -275,6 +275,9 @@ describe Naranjero do
     expect(@n1.altura).to eq(198)
     expect(@n1.contador).to eq(0)
    end
+   it"Si el arbol esta muerto no crece"do
+    expect(@n3.crecer).to eq(false)
+   end
   end
   end
 end 
