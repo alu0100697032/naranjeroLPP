@@ -3,6 +3,7 @@ class Naranjero
     
     def initialize(altura, edad, contador)
        @edad = edad
+       #si el arbol pasa de 100 años muere
        if(@edad >= 100)
             @arbolVivo = false
             @contador = 0
@@ -15,7 +16,8 @@ class Naranjero
     
     def uno_mas
         @edad = @edad +1
-        if(@edad > 100)
+        #se comprueba si el arbol ha pasado de 100 años 
+        if(@edad >= 100)
             @arbolVivo = false
             @contador = 0
         else
