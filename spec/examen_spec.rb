@@ -270,6 +270,12 @@ describe Naranjero do
     expect(@n3.recolectar_una).to eq("El arbol esta muerto")
     expect(@n3.contador).to eq(0)
    end
+   it"Hilo para hacer crecer el arbol"do
+    @n1.crecer
+    expect(@n1.edad).to eq(100)
+    expect(@n1.altura).to eq(10.4)
+    expect(@n1.contador).to eq(0)
+   end
   end
   end
 end 
