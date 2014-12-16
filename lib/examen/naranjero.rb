@@ -1,3 +1,5 @@
+require 'thread'
+
 class Naranjero
     attr_reader :altura, :edad, :contador, :arbolVivo
     
@@ -35,5 +37,11 @@ class Naranjero
                 @contador = @contador -1
                 mensaje = "La naranja estaba deliciosa"
         end
+    end
+    
+    def crecer
+        #if(arbolVivo)
+            Thread.new { (4).times { sleep 0.2; puts 'creciendo' }}
+       # end
     end
 end
