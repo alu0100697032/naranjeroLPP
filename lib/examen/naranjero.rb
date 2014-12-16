@@ -23,7 +23,7 @@ class Naranjero
             @arbolVivo = false
             @contador = 0
         else
-            @altura = @altura + 0.1
+            @altura = @altura + 1
             @contador = @edad/5
         end
     end
@@ -40,8 +40,8 @@ class Naranjero
     end
     
     def crecer
-        #if(arbolVivo)
-            Thread.new { (4).times { sleep 0.2; puts 'creciendo' }}
-       # end
+        if(arbolVivo)
+            Thread.new { (100-@edad).times { sleep 0.1; uno_mas }}.join
+        end
     end
 end
