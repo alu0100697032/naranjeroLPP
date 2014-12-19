@@ -8,4 +8,7 @@ module Examen
   require 'examen/exam.rb'
   require 'examen/interfaz.rb'
   require 'examen/naranjero.rb'
+  require "DSL/respuesta.rb"
+  require "DSL/question.rb"
+  require "DSL/quiz.rb"
 end
