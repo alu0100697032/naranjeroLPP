@@ -13,15 +13,13 @@ class Quiz
 	def question(text, answers)
 		q = Question.new(text, answers)
 		questions << q
-		puts q if $DEBUG
 		@counter = 0
 	end
 
 	def to_s
-		#out = <<"EOQUIZ"
 		self.name
 		self.questions.join("\n")
-		#EOQUIZ	
+		
 	end
 
 	def wrong
@@ -38,10 +36,5 @@ class Quiz
 		@name = title
 	end
 
-	def run
-		counter=0
-		puts self.name+"\n\n"
-		self.questions.each { |q| counter += 1 if q.ask }
-		puts "#{counter} respuestas correctas de un total de #{@questions.size}."
-	end
+	
 end

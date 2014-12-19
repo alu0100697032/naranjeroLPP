@@ -19,14 +19,5 @@ class Question
 			out
 	end
 
-	def ask
-		begin
-			puts self
-			print "Su respuesta: "
-			answerno = $stdin.read
-			answerno = answerno.to_i - 1
-			puts "\n"
-		end while (answerno < 0 or answerno >= @answers.length)
-		@answers[answerno].is_right?
-		end
+	
 end
