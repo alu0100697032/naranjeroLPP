@@ -41,28 +41,14 @@ class Naranjero
         end
     end
     
-    def crecer
-        if(arbolVivo)
-            uno_mas
-            sleep(0.0001)
-        else
-            arbolVivo
-        end
-    end
-   
-    def recolectar 
-        
-        recolectar_una
-        sleep(0.0001) 
-    end
-    
-    def thread 
-        t1 = Thread.new{(100-@edad).times {crecer; puts "creciendo"; puts "#{@contador}"}}
-        t2 = Thread.new{(@produccion).times {recolectar; puts "recolectando";puts "#{@contador}"}}
+    def simulaTraza
+        t1 = Thread.new {100.times{uno_mas; sleep 0.0001}}
+        t2 = Thread.new {200.times{puts recolectar_una; sleep 0.00001}}
         t1.join
         t2.join
-   
     end
+
+    
     
     
 end

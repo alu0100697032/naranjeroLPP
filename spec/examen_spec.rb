@@ -278,7 +278,11 @@ describe Naranjero do
      Thread.new {10.times {@n4.recolectar_una; sleep(0.1); "Recolectando"}}.join
      expect(@n4.contador).to eq (40)
    end 
-     
+   it "prueba" do
+     @n1.simulaTraza
+     expect(@n1.edad).to eq(101)
+    end
+    
   end
   end
 end 
