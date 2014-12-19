@@ -286,6 +286,10 @@ describe Naranjero do
   end
   end
   
+  
+  
+  
+  
 describe Respuesta do
 		before :all do
 			@respuesta1 = Respuesta.new(1, :RIGHT, "7")
