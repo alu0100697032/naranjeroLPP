@@ -1,7 +1,7 @@
 require 'thread'
 
 class Naranjero
-    attr_reader :altura, :edad, :contador, :arbolVivo
+    attr_reader :altura, :edad, :contador, :arbolVivo, :produccion
     
     def initialize(altura, edad, contador)
        @edad = edad
@@ -12,6 +12,7 @@ class Naranjero
         else
             @arbolVivo = true
             @contador = contador
+            @produccion = produccion
         end
         @altura = altura
     end
@@ -25,6 +26,7 @@ class Naranjero
         else
             @altura = @altura + 1
             @contador = @edad/5
+            @produccion = @contador
         end
     end
     
@@ -41,9 +43,26 @@ class Naranjero
     
     def crecer
         if(arbolVivo)
-            Thread.new { (100-@edad).times { sleep 0.1; uno_mas }}.join
+            uno_mas
+            sleep(0.0001)
         else
             arbolVivo
         end
     end
+   
+    def recolectar 
+        
+        recolectar_una
+        sleep(0.0001) 
+    end
+    
+    def thread 
+        t1 = Thread.new{(100-@edad).times {crecer; puts "creciendo"; puts "#{@contador}"}}
+        t2 = Thread.new{(@produccion).times {recolectar; puts "recolectando";puts "#{@contador}"}}
+        t1.join
+        t2.join
+   
+    end
+    
+    
 end

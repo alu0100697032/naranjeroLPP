@@ -238,6 +238,7 @@ describe Naranjero do
     @n1 = Naranjero.new(100, 1, 0)
     @n2 = Naranjero.new(1, 5, 1)
     @n3 = Naranjero.new(5, 100, 20)
+    @n4 = Naranjero.new(50, 20, 50)
    end
    it "Atributos"do
      expect(@n1.altura).to eq(100)
@@ -270,14 +271,14 @@ describe Naranjero do
     expect(@n3.recolectar_una).to eq("El arbol esta muerto")
    end
    it"Hilo para hacer crecer el arbol"do
-    @n1.crecer
-    expect(@n1.edad).to eq(100)
-    expect(@n1.altura).to eq(198)
-    expect(@n1.contador).to eq(0)
-   end
-   it"Si el arbol esta muerto no crece"do
-    expect(@n3.crecer).to eq(false)
-   end
+     Thread.new {10.times {@n1.uno_mas; sleep(0.1); "El arbol esta creciendo"}}.join
+     expect(@n1.edad).to eq (11)
+   end 
+   it"Hilo para recolectar del arbol"do
+     Thread.new {10.times {@n4.recolectar_una; sleep(0.1); "Recolectando"}}.join
+     expect(@n4.contador).to eq (40)
+   end 
+     
   end
   end
 end 
